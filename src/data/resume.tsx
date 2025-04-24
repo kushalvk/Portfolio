@@ -86,7 +86,7 @@ export const DATA = {
       dates: "Nov 2024 - Oct 2024",
       active: true,
       description:
-        "VK Hotel Management System is a comprehensive platform that allows users to book rooms, halls, and dining spaces, and make secure online payments. The system also includes various management tools for admin users and handles different room types, bookings, and payment options..",
+        "Bid Athlete Project is an interactive web platform that allows event organizers to create and manage athletic competitions, while athletes can place bids to participate. The system includes secure login, role-based access for admins, organizers, and athletes, and real-time bidding features. It also provides tools for managing events, users, and bid details, offering a smooth and responsive user experience for all participants.",
       technologies: [
         "React.js",
         "MongoDB",
@@ -148,7 +148,7 @@ export const DATA = {
       dates: "Aug 2024 - Oct 2024",
       active: true,
       description:
-        "VK Hotel Management System is a comprehensive platform that allows users to book rooms, halls, and dining spaces, and make secure online payments. The system also includes various management tools for admin users and handles different room types, bookings, and payment options..",
+        "VK Hotel Management System is a comprehensive platform that allows users to book rooms, halls, and dining spaces, and make secure online payments. The system also includes various management tools for admin users and handles different room types, bookings, and payment options.",
       technologies: [
         "React.js",
         "MongoDB",
