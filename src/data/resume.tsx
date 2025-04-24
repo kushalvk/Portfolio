@@ -64,7 +64,7 @@ export const DATA = {
       title: "Full-Stack Web Devloper Intarnship",
       logoUrl: "https://media.licdn.com/dms/image/v2/C4D0BAQFcxRkX3hta4A/company-logo_200_200/company-logo_200_200/0/1674128554948?e=2147483647&v=beta&t=is7RBjcKZsSk5G-wst13FfdXQp2Zoh9cvqrg9Ie2JyA",
       start: "Oct 2024",
-      end: "Present",
+      end: "Mar 2025",
       description:
         "As a Full-Stack Web Developer Intern at Durvasa Infotech, I have been actively involved in designing, developing, and optimizing web applications. I work with React, Node.js, and Express.js integrating robust backend services with seamless front-end experiences. Additionally, I contribute to database management using MongoDB, ensuring efficient data handling. I have also explored TypeScript to enhance code scalability and maintainability. My role includes building, testing, and deploying applications and scalable software solutions.(Cloudinary)",
     },
@@ -81,9 +81,9 @@ export const DATA = {
   ],
   projects: [
     {
-      title: "Hotel Management System",
-      href: "https://hotel-managment-system-client.vercel.app/",
-      dates: "Aug 2024 - Oct 2024",
+      title: "Bid Athlete",
+      href: "https://bid-athlete.vercel.app/",
+      dates: "Nov 2024 - Oct 2024",
       active: true,
       description:
         "VK Hotel Management System is a comprehensive platform that allows users to book rooms, halls, and dining spaces, and make secure online payments. The system also includes various management tools for admin users and handles different room types, bookings, and payment options..",
@@ -92,23 +92,25 @@ export const DATA = {
         "MongoDB",
         "TailwindCSS",
         "Node.js",
-        "Express.js"
+        "Express.js",
+        "Cloudinary",
+        "Vercel"
       ],
       links: [
         {
           type: "Website",
-          href: "https://hotel-managment-system-client.vercel.app/",
+          href: "https://bid-athlete.vercel.app/",
           icon: <Icons.globe className="size-3" />,
         },
         {
           type: "Source",
-          href: "https://github.com/kushalvk/Hotel-Managment-System",
+          href: "https://github.com/kushalvk/BidAthlete",
           icon: <Icons.github className="size-3" />,
         },
       ],
       image: "",
       video:
-        "Hotel_MS.mp4",
+        "Bid_Athlete.mp4",
     },
     {
       title: "Office Management System",
@@ -139,6 +141,36 @@ export const DATA = {
       ],
       image: "",
       video: "Office_MS.mp4",
+    },
+    {
+      title: "Hotel Management System",
+      href: "https://hotel-managment-system-client.vercel.app/",
+      dates: "Aug 2024 - Oct 2024",
+      active: true,
+      description:
+        "VK Hotel Management System is a comprehensive platform that allows users to book rooms, halls, and dining spaces, and make secure online payments. The system also includes various management tools for admin users and handles different room types, bookings, and payment options..",
+      technologies: [
+        "React.js",
+        "MongoDB",
+        "TailwindCSS",
+        "Node.js",
+        "Express.js"
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://hotel-managment-system-client.vercel.app/",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/kushalvk/Hotel-Managment-System",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "",
+      video:
+        "Hotel_MS.mp4",
     },
   ],
 } as const;
