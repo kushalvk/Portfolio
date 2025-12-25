@@ -23,6 +23,12 @@ export const DATA = {
     "Java",
     "Java Spring Boot",
     "C++",
+    "Angular",
+    "Flask",
+    "PHP",
+    "Mysql",
+    ".NET",
+    "Oracle"
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
@@ -77,6 +83,14 @@ export const DATA = {
       logoUrl: "https://upload.wikimedia.org/wikipedia/en/1/11/VNSGU_logo.png",
       start: "2022",
       end: "2025",
+    },
+    {
+      school: "Charotar University of Science and Technology (CHARUSAT)",
+      href: "https://www.charusat.ac.in/",
+      degree: "Master of Science in Information Technology (M.Sc. IT)",
+      logoUrl: "https://admission.charusat.ac.in/View%20Assets/images/University_Hero.png",
+      start: "2025",
+      end: "Present"
     },
   ],
   projects: [
@@ -171,6 +185,36 @@ export const DATA = {
       image: "",
       video:
         "Hotel_MS.mp4",
+    },
+    {
+      title: "SkillSurge",
+      href: "https://skillsurge-ashen.vercel.app/",
+      dates: "Mar 2025 - Nov 2025",
+      active: true,
+      description:
+          "Proud to share my latest project — SkillSurge, a complete learning platform built using Next.js and TypeScript. I handled the full development lifecycle including UI design, backend integration, deployment, and writing automated test cases with Jest to ensure stability and performance. This project strengthened my skills in modern web development, testing, and production deployment.",
+      technologies: [
+        "Next.js",
+        "TypeScript",
+        "TailwindCSS",
+        "Jest (unit & API testing)",
+        "MongoDB"
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://skillsurge-ashen.vercel.app/",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/kushalvk/NEXT-JS/tree/main/e_lerning",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "",
+      video:
+          "SkillSurge.mp4",
     },
   ],
 } as const;
