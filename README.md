@@ -1,52 +1,52 @@
-<<<<<<< HEAD
-# Portfolio
-Portfolio
-=======
-<div align="center">
-<img alt="Portfolio" src="https://github.com/dillionverma/portfolio/assets/16860528/57ffca81-3f0a-4425-b31d-094f61725455" width="90%">
-</div>
+# Kushal Vaghela — Portfolio
 
-# Portfolio [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fdillionverma%2Fportfolio)
+A dark-first, 3D-inspired developer portfolio with parallax effects, an interactive terminal hero, a filterable project grid, an MDX blog, and a print-ready resume page.
 
-Built with next.js, [shadcn/ui](https://ui.shadcn.com/), and [magic ui](https://magicui.design/), deployed on Vercel.
+Built with **Next.js 14 (App Router)**, **TypeScript**, **Tailwind CSS**, **shadcn/ui**, and **Framer Motion**. Deployed on **Vercel**.
 
-# Features
+## Features
 
-- Setup only takes a few minutes by editing the [single config file](./src/data/resume.tsx)
-- Built using Next.js 14, React, Typescript, Shadcn/UI, TailwindCSS, Framer Motion, Magic UI
-- Includes a blog
-- Responsive for different devices
-- Optimized for Next.js and Vercel
+- **Single source of truth** — all content (bio, skills, work, education, projects, socials) lives in [`src/data/resume.tsx`](./src/data/resume.tsx)
+- **3D-inspired visuals without WebGL** — mouse-tracking tilt cards, parallax aurora orbs, a floating terminal window, and glassmorphism, all via CSS transforms and Framer Motion (no three.js)
+- **Filterable project grid** — filter chips are derived automatically from each project's technologies, with animated layout transitions and GitHub/live links
+- **Downloadable resume** — [`/resume`](./src/app/resume/page.tsx) renders a print-optimized resume from `resume.tsx`; the "Download PDF" button uses the browser's *Save as PDF*
+- **Blog** — MDX posts in [`content/`](./content) with Shiki syntax highlighting
+- **Dark / light theme** — dark by default, toggle in the dock
+- **Accessibility** — skip link, `prefers-reduced-motion` support (marquee/tilt/orbs degrade gracefully), focus rings, ARIA labels
+- **SEO** — metadata, JSON-LD Person schema, `sitemap.xml`, and `robots.txt`
 
-# Getting Started Locally
+## Getting Started
 
-1. Clone this repository to your local machine:
+```bash
+# 1. Install dependencies
+pnpm install   # or: npm install
 
-   ```bash
-   git clone https://github.com/dillionverma/portfolio
-   ```
+# 2. Start the dev server
+pnpm dev       # or: npm run dev
+```
 
-2. Move to the cloned directory
+Open [http://localhost:3000](http://localhost:3000).
 
-   ```bash
-   cd portfolio
-   ```
+### Scripts
 
-3. Install dependencies:
+| Command      | Description                       |
+| ------------ | --------------------------------- |
+| `pnpm dev`   | Start the development server      |
+| `pnpm build` | Create an optimized production build |
+| `pnpm start` | Serve the production build        |
+| `pnpm lint`  | Run ESLint                        |
 
-   ```bash
-   pnpm install
-   ```
+## Editing Content
 
-4. Start the local Server:
+- **Everything on the site** — edit the `DATA` object in [`src/data/resume.tsx`](./src/data/resume.tsx)
+- **Project videos** — drop `.mp4` files into [`public/`](./public) and reference them by filename in a project's `video` field
+- **Blog posts** — add `.mdx` files to [`content/`](./content) with `title`, `publishedAt`, and `summary` frontmatter
+- **Deployed URL** — update `DATA.url` so metadata, the sitemap, and OpenGraph tags point at your domain
 
-   ```bash
-   pnpm dev
-   ```
+## Deploy
 
-5. Open the [Config file](./src/data/resume.tsx) and make changes
+Push to GitHub and import the repo into [Vercel](https://vercel.com/new) — no extra configuration needed.
 
-# License
+## Credits & License
 
-Licensed under the [MIT license](https://github.com/dillionverma/portfolio/blob/main/LICENSE.md).
->>>>>>> f092b49 (My Portfolio Website.)
+Originally based on the [dillionverma/portfolio](https://github.com/dillionverma/portfolio) template. Licensed under the [MIT license](./LICENSE).

@@ -5,64 +5,64 @@
 @layer base {
     :root {
       --background: 0 0% 100%;
-      --foreground: 210 11.1% 3.53%;
+      --foreground: 234 16% 8%;
 
       --card: 0 0% 100%;
-      --card-foreground: 210 11.1% 3.53%;
+      --card-foreground: 234 16% 8%;
 
       --popover: 0 0% 100%;
-      --popover-foreground: 210 11.1% 3.53%;
+      --popover-foreground: 234 16% 8%;
 
-      --primary: 0 0% 9%;
+      --primary: 234 16% 10%;
       --primary-foreground: 0 0% 98%;
 
-      --secondary: 0 0% 96.1%;
-      --secondary-foreground: 0 0% 9%;
+      --secondary: 234 12% 95%;
+      --secondary-foreground: 234 16% 10%;
 
-      --muted: 0 0% 96.1%;
-      --muted-foreground: 0 0% 45.1%;
+      --muted: 234 12% 95%;
+      --muted-foreground: 234 8% 44%;
 
-      --accent: 0 0% 96.1%;
-    --accent-foreground: 0 0% 9%;
+      --accent: 234 12% 94%;
+      --accent-foreground: 234 16% 10%;
 
       --destructive: 0 84.2% 60.2%;
       --destructive-foreground: 0 0% 98%;
 
-      --border: 0 0% 89.8%;
-      --input: 0 0% 89.8%;
-      --ring: 0 0% 3.9%;
+      --border: 234 12% 90%;
+      --input: 234 12% 90%;
+      --ring: 243 75% 59%;
 
-      --radius: 0.5rem;
+      --radius: 0.75rem;
     }
 
     .dark {
-      --background: 210 11.1% 3.53%;
-      --foreground: 0 0% 98%;
+      --background: 235 26% 5%;
+      --foreground: 226 25% 95%;
 
-      --card: 210 11.1% 3.53%;
-      --card-foreground: 0 0% 98%;
+      --card: 234 22% 8%;
+      --card-foreground: 226 25% 95%;
 
-      --popover: 210 11.1% 3.53%;
-      --popover-foreground: 0 0% 98%;
+      --popover: 234 22% 7%;
+      --popover-foreground: 226 25% 95%;
 
-      --primary: 0 0% 98%;
-      --primary-foreground: 0 0% 9%;
+      --primary: 226 25% 95%;
+      --primary-foreground: 234 22% 10%;
 
-      --secondary: 0 0% 14.9%;
-      --secondary-foreground: 0 0% 98%;
+      --secondary: 233 16% 14%;
+      --secondary-foreground: 226 25% 95%;
 
-      --muted: 0 0% 14.9%;
-      --muted-foreground: 0 0% 63.9%;
+      --muted: 233 16% 13%;
+      --muted-foreground: 228 12% 64%;
 
-      --accent: 0 0% 14.9%;
-      --accent-foreground: 0 0% 98%;
+      --accent: 233 16% 16%;
+      --accent-foreground: 226 25% 95%;
 
-      --destructive: 0 62.8% 30.6%;
+      --destructive: 0 62.8% 40%;
       --destructive-foreground: 0 0% 98%;
 
-      --border: 0 0% 14.9%;
-      --input: 0 0% 14.9%;
-      --ring: 0 0% 83.1%;
+      --border: 233 14% 16%;
+      --input: 233 14% 16%;
+      --ring: 234 89% 74%;
     }
   }
 
@@ -73,16 +73,216 @@
     body {
       @apply bg-background text-foreground;
     }
+    ::selection {
+      @apply bg-indigo-500/30;
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      html {
+        scroll-behavior: smooth;
+      }
+    }
+  }
+
+  @layer components {
+    /* Signature accent gradient used for headings, chips and CTAs */
+    .gradient-text {
+      @apply bg-gradient-to-r from-indigo-600 via-violet-600 to-cyan-500 bg-clip-text text-transparent dark:from-indigo-400 dark:via-violet-400 dark:to-cyan-300;
+    }
+    /* Frosted-glass panel used for cards across the site */
+    .glass {
+      @apply border border-black/[0.06] bg-white/70 backdrop-blur-xl dark:border-white/[0.08] dark:bg-white/[0.04];
+    }
+    /* Faint blueprint grid rendered behind the whole site */
+    .bg-grid-pattern {
+      background-image:
+        linear-gradient(to right, hsl(var(--foreground) / 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, hsl(var(--foreground) / 0.05) 1px, transparent 1px);
+      background-size: 3.5rem 3.5rem;
+    }
+  }
+
+  /* ---- Preloader (boot sequence) ----------------------------------------
+     The whole animation runs on a pure-CSS timeline so it plays correctly
+     from the moment the HTML paints — even before React hydrates on a cold
+     first load. */
+  .preloader-line-clip {
+    display: inline-block;
+    overflow: hidden;
+    white-space: pre;
+    vertical-align: bottom;
+    max-width: 0;
+  }
+
+  @keyframes preloader-typing {
+    from {
+      max-width: 0;
+    }
+    to {
+      max-width: var(--line-length);
+    }
+  }
+
+  @keyframes preloader-caret-window {
+    0% {
+      visibility: hidden;
+    }
+    0.5% {
+      visibility: visible;
+    }
+    99.5% {
+      visibility: visible;
+    }
+    100% {
+      visibility: hidden;
+    }
+  }
+
+  @keyframes preloader-caret-window-hold {
+    0% {
+      visibility: hidden;
+    }
+    0.5% {
+      visibility: visible;
+    }
+    100% {
+      visibility: visible;
+    }
+  }
+
+  @keyframes preloader-caret-blink {
+    0%,
+    45% {
+      opacity: 1;
+    }
+    50%,
+    95% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes preloader-progress {
+    from {
+      width: 0%;
+    }
+    to {
+      width: 100%;
+    }
+  }
+
+  @property --preloader-count {
+    syntax: "<integer>";
+    initial-value: 0;
+    inherits: false;
+  }
+
+  @keyframes preloader-counting {
+    from {
+      --preloader-count: 0;
+    }
+    to {
+      --preloader-count: 100;
+    }
+  }
+
+  .preloader-percent {
+    counter-reset: preloader-percent var(--preloader-count, 0);
+  }
+
+  .preloader-percent::after {
+    content: counter(preloader-percent) "%";
+  }
+
+  @keyframes preloader-exit {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+      transform: scale(1.08);
+      visibility: hidden;
+    }
+  }
+
+  /* Subtle themed scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground) / 0.5);
+  }
+
+  /* Accessibility: stop decorative motion for users who prefer reduced motion.
+     The skills marquee degrades into a static, wrapped chip grid. */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-blob,
+    .animate-float,
+    .animate-marquee,
+    .animate-caret-blink,
+    .animate-cube-spin {
+      animation: none !important;
+    }
+    .marquee-track {
+      animation: none !important;
+      width: 100% !important;
+    }
+    .marquee-track .marquee-content {
+      width: 100%;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .marquee-track .marquee-clone {
+      display: none;
+    }
+    .preloader-overlay {
+      display: none !important;
+    }
+  }
+
+  /* Print: force a light palette (even in dark mode) so /resume exports cleanly */
+  @media print {
+    @page {
+      margin: 1.4cm;
+    }
+    :root,
+    .dark {
+      --background: 0 0% 100%;
+      --foreground: 234 16% 10%;
+      --card: 0 0% 100%;
+      --card-foreground: 234 16% 10%;
+      --secondary: 234 12% 94%;
+      --secondary-foreground: 234 16% 10%;
+      --muted: 234 12% 94%;
+      --muted-foreground: 234 8% 35%;
+      --border: 234 12% 80%;
+    }
+    body {
+      background: #fff !important;
+    }
+    * {
+      box-shadow: none !important;
+      text-shadow: none !important;
+    }
   }
 
   h3 code {
     @apply !text-lg md:!text-xl;
   }
-  
+
   pre {
     @apply !px-0 rounded-lg overflow-x-auto py-4
   }
-   
+
   pre [data-line] {
     @apply px-4
   }
@@ -90,17 +290,17 @@
   code {
     @apply text-sm md:text-base !leading-loose;
   }
-  
+
   pre > code {
     counter-reset: line;
   }
-  
+
   code[data-theme*=" "],
   code[data-theme*=" "] span {
     color: var(--shiki-light);
     background-color: var(--shiki-light-bg);
   }
-   
+
   @media (prefers-color-scheme: dark) {
     code[data-theme*=" "],
     code[data-theme*=" "] span {
@@ -108,25 +308,25 @@
       background-color: var(--shiki-dark-bg);
     }
   }
-  
+
   code[data-line-numbers] {
     counter-reset: line;
   }
-  
+
   code[data-line-numbers] > [data-line]::before {
     counter-increment: line;
     content: counter(line);
     @apply inline-block w-4 mr-4 text-right text-gray-500;
   }
- 
+
   code {
     counter-reset: line;
   }
- 
+
   code > [data-line]::before {
   counter-increment: line;
   content: counter(line);
- 
+
   /* Other styling */
   display: inline-block;
   width: 1rem;
@@ -134,11 +334,11 @@
   text-align: right;
   color: gray;
 }
- 
+
 code[data-line-numbers-max-digits="2"] > [data-line]::before {
   width: 2rem;
 }
- 
+
 code[data-line-numbers-max-digits="3"] > [data-line]::before {
   width: 3rem;
 }

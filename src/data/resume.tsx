@@ -1,22 +1,22 @@
 import { Icons } from "@/components/icons";
-import { HomeIcon, NotebookIcon } from "lucide-react";
+import { FileTextIcon, HomeIcon, NotebookIcon } from "lucide-react";
 
 export const DATA = {
   name: "Kushal Vaghela",
-  initials: "DV",
+  initials: "KV",
   url: "https://dillion.io",
   location: "Surat, Gujarat, IND",
-  locationLink: "https://www.google.com/maps/place/sanfrancisco",
+  locationLink: "https://www.google.com/maps/place/Surat,+Gujarat",
   description:
     "As a Full-stack web developer with a growing passion for software engineering, I thrive on crafting innovative digital solutions and exploring the tech landscape. You can catch me sharing my journey and insights on GitHub, where I’m very active!",
   summary:
     "I completed my Bachelor of Computer Applications (BCA) and gained expertise in modern web technologies. I specialize in React, Node.js, Express.js, Java, and Java Spring Boot, building scalable and efficient applications. I also have experience working with databases like MongoDB and PostgreSQL, and I’m exploring NEXT JS & TypeScript with libraries like Lit to enhance my development skills. Always eager to learn, I’m passionate about creating innovative and high-performance web solutions.",
-  avatarUrl: "https://res.cloudinary.com/da0lceyy7/image/upload/v1740752274/rsqez04kjf71o4vss4m1.jpg",
+  avatarUrl: "https://res.cloudinary.com/da0lceyy7/image/upload/v1784831053/1_nbfohl.jpg",
   skills: [
     "React",
     "Next.js",
     "JavaScript",
-    "Typescript",
+    "TypeScript",
     "Node.js",
     "Python",
     "Postgres",
@@ -26,12 +26,14 @@ export const DATA = {
     "Angular",
     "Flask",
     "PHP",
-    "Mysql",
+    "MySQL",
     ".NET",
     "Oracle"
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
+    { href: "/blog", icon: NotebookIcon, label: "Blog" },
+    { href: "/resume", icon: FileTextIcon, label: "Resume" },
   ],
   contact: {
     email: "kushalvaghela2003@gmail.com",
@@ -64,7 +66,8 @@ export const DATA = {
   work: [
     {
       company: "Durvasa Infotech",
-      href: "https://atomic.finance",
+      href: "https://www.durvasainfotech.com/",
+
       badges: [],
       location: "Office",
       title: "Full-Stack Web Devloper Intarnship",
@@ -127,7 +130,7 @@ export const DATA = {
         "Bid_Athlete.mp4",
     },
     {
-      title: "Office Management System",
+      title: "WorkPilot",
       href: "https://office-ms-two.vercel.app/",
       dates: "Dec 2024 - Mar 2024",
       active: true,
@@ -157,7 +160,41 @@ export const DATA = {
       video: "Office_MS.mp4",
     },
     {
-      title: "Hotel Management System",
+      title: "VeriNest",
+      href: "https://veri-nest-tenant.vercel.app/",
+      dates: "Mar 2026 - Present",
+      active: true,
+      description:
+          "A full-stack MERN platform that lets tenants build a single reusable, AI-verified profile — with OCR-based document extraction, fraud/duplicate detection, and a computed trust score — while landlords search verified tenants and request secure, time-limited access to their documents via cryptographically signed tokens. Includes digital rental agreements with e-signatures, post-tenancy ratings, a Gemini-powered chat assistant scoped to each user's own data, Google OAuth login, and reCAPTCHA-protected auth.",
+      technologies: [
+        "React.js",
+        "TypeScript",
+        "TailwindCSS",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "Cloudinary",
+        "Tesseract OCR",
+        "Gemini API",
+        "JWT"
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://veri-nest-tenant.vercel.app/",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/kushalvk/VeriNest",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "VeriNest.png",
+      video: "",
+    },
+    {
+      title: "StaySync",
       href: "https://hotel-managment-system-client.vercel.app/",
       dates: "Aug 2024 - Oct 2024",
       active: true,

@@ -21,6 +21,8 @@ const config = {
     extend: {
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
+        display: ["var(--font-display)", ...fontFamily.sans],
+        mono: ["var(--font-mono)", ...fontFamily.mono],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -71,10 +73,37 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        blob: {
+          "0%, 100%": { transform: "translate(0, 0) scale(1)" },
+          "33%": { transform: "translate(40px, -60px) scale(1.15)" },
+          "66%": { transform: "translate(-30px, 40px) scale(0.9)" },
+        },
+        float: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-14px)" },
+        },
+        marquee: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(-50%)" },
+        },
+        "caret-blink": {
+          "0%, 45%": { opacity: "1" },
+          "50%, 95%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+        "cube-spin": {
+          "0%": { transform: "rotateX(-22deg) rotateY(0deg)" },
+          "100%": { transform: "rotateX(-22deg) rotateY(360deg)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        blob: "blob 18s ease-in-out infinite",
+        float: "float 6s ease-in-out infinite",
+        marquee: "marquee 45s linear infinite",
+        "caret-blink": "caret-blink 1.2s ease-out infinite",
+        "cube-spin": "cube-spin 3.2s linear infinite",
       },
     },
   },

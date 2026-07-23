@@ -1,7 +1,9 @@
 import { getBlogPosts, getPost } from "@/data/blog";
 import { DATA } from "@/data/resume";
 import { formatDate } from "@/lib/utils";
+import { ArrowLeftIcon } from "lucide-react";
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 
@@ -65,7 +67,7 @@ export default async function Blog({
   }
 
   return (
-    <section id="blog">
+    <main id="main-content" className="mx-auto w-full max-w-2xl px-6 pb-32 pt-24">
       <script
         type="application/ld+json"
         suppressHydrationWarning
@@ -88,12 +90,19 @@ export default async function Blog({
           }),
         }}
       />
-      <h1 className="title font-medium text-2xl tracking-tighter max-w-[650px]">
+      <Link
+        href="/blog"
+        className="mb-8 inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+      >
+        <ArrowLeftIcon className="size-4" />
+        All posts
+      </Link>
+      <h1 className="font-display text-3xl font-bold tracking-tight">
         {post.metadata.title}
       </h1>
-      <div className="flex justify-between items-center mt-2 mb-8 text-sm max-w-[650px]">
+      <div className="mb-8 mt-2 flex items-center justify-between text-sm">
         <Suspense fallback={<p className="h-5" />}>
-          <p className="text-sm text-neutral-600 dark:text-neutral-400">
+          <p className="font-mono text-xs text-muted-foreground">
             {formatDate(post.metadata.publishedAt)}
           </p>
         </Suspense>
@@ -102,6 +111,6 @@ export default async function Blog({
         className="prose dark:prose-invert"
         dangerouslySetInnerHTML={{ __html: post.source }}
       ></article>
-    </section>
+    </main>
   );
 }
