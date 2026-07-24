@@ -100,7 +100,7 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative flex min-h-[92vh] flex-col justify-center overflow-hidden pb-24 pt-28"
+      className="relative flex min-h-[92vh] flex-col justify-center overflow-hidden pb-16 pt-24 sm:pb-24 sm:pt-28"
     >
       {/* Parallax aurora orbs */}
       <div aria-hidden className="pointer-events-none absolute inset-0">
@@ -121,7 +121,7 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="relative z-10 mx-auto grid w-full max-w-6xl items-center gap-14 px-6 lg:grid-cols-[1.05fr_0.95fr]">
+      <div className="relative z-10 mx-auto grid w-full max-w-6xl items-center gap-10 px-6 sm:gap-14 lg:grid-cols-[1.05fr_0.95fr]">
         {/* Intro */}
         <div className="flex flex-col items-start gap-5">
           <motion.a
@@ -144,14 +144,14 @@ export function Hero() {
 
           <motion.h1
             {...enter(0.2)}
-            className="font-display text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl"
+            className="font-display text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl"
           >
             {firstName} <span className="gradient-text">{lastName}</span>
           </motion.h1>
 
           <motion.h2
             {...enter(0.28)}
-            className="font-display text-2xl font-semibold text-muted-foreground sm:text-3xl"
+            className="font-display text-xl font-semibold text-muted-foreground sm:text-2xl md:text-3xl"
           >
             Software Engineer · Tech Explorer
           </motion.h2>
@@ -163,18 +163,21 @@ export function Hero() {
             {DATA.description}
           </motion.p>
 
-          <motion.div {...enter(0.44)} className="mt-2 flex flex-wrap gap-3">
+          <motion.div
+            {...enter(0.44)}
+            className="mt-2 flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap"
+          >
             <Button
               asChild
               size="lg"
-              className="group bg-gradient-to-r from-indigo-500 via-violet-500 to-cyan-500 text-white shadow-lg shadow-indigo-500/25 transition-all hover:shadow-xl hover:shadow-indigo-500/30 hover:brightness-110"
+              className="group w-full bg-gradient-to-r from-indigo-500 via-violet-500 to-cyan-500 text-white shadow-lg shadow-indigo-500/25 transition-all hover:shadow-xl hover:shadow-indigo-500/30 hover:brightness-110 sm:w-auto"
             >
               <Link href="#projects">
                 View My Work
                 <ArrowRightIcon className="ml-2 size-4 transition-transform group-hover:translate-x-1" />
               </Link>
             </Button>
-            <Button asChild size="lg" variant="outline">
+            <Button asChild size="lg" variant="outline" className="w-full sm:w-auto">
               <Link href="/resume">
                 <FileDownIcon className="mr-2 size-4" />
                 Download Resume
@@ -204,14 +207,14 @@ export function Hero() {
           <TiltCard className="mx-auto w-full max-w-md rounded-2xl lg:max-w-none">
             <div className="animate-float overflow-hidden rounded-2xl border border-white/10 bg-[#0d1022]/95 shadow-2xl shadow-indigo-500/10 backdrop-blur">
               <div className="flex items-center gap-1.5 border-b border-white/5 px-4 py-3">
-                <span className="size-3 rounded-full bg-[#ff5f57]" />
-                <span className="size-3 rounded-full bg-[#febc2e]" />
-                <span className="size-3 rounded-full bg-[#28c840]" />
-                <span className="ml-3 font-mono text-xs text-white/40">
+                <span className="size-3 shrink-0 rounded-full bg-[#ff5f57]" />
+                <span className="size-3 shrink-0 rounded-full bg-[#febc2e]" />
+                <span className="size-3 shrink-0 rounded-full bg-[#28c840]" />
+                <span className="ml-3 truncate font-mono text-xs text-white/40">
                   {slugify(DATA.name)} — zsh
                 </span>
               </div>
-              <div className="space-y-1.5 p-5 font-mono text-[13px] leading-relaxed">
+              <div className="space-y-1.5 break-words p-4 font-mono text-xs leading-relaxed sm:p-5 sm:text-[13px]">
                 <p>
                   <span className="text-cyan-300">$</span>{" "}
                   <span className="text-white/90">whoami</span>
@@ -230,7 +233,9 @@ export function Hero() {
                 </p>
                 <p className="grid grid-cols-2 gap-x-4 text-emerald-300/80">
                   {TERMINAL_PROJECTS.map((project) => (
-                    <span key={project}>{project}</span>
+                    <span key={project} className="min-w-0 break-words">
+                      {project}
+                    </span>
                   ))}
                 </p>
                 <p className="pt-2">
