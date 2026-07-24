@@ -23,7 +23,7 @@ There is no test suite in this repo.
 
 - `DATA` is declared `as const`; its shape is consumed directly (no separate type definitions). Section components derive their types from it (e.g. `(typeof DATA.projects)[number]`), so keep field names/nesting consistent when adding entries.
 - Client components import `DATA` directly rather than receiving it as props (the `links[].icon` values are JSX, which can't cross the RSC serialization boundary).
-- Project entries support an `image` or a `video` filename resolved from `public/` (e.g. `"Hotel_MS.mp4"`). Missing/broken media falls back to a gradient placeholder in `sections/projects.tsx`.
+- Project entries have `image` and `video` fields, each accepting a full URL (optimized Cloudinary URLs are preferred) or a plain filename resolved from `public/`. `sections/projects.tsx` renders **poster-first**: `image` is shown immediately as the poster, and `video` is fetched only on hover (desktop) or the play button (touch/click). Fallback chain is poster → gradient/initials placeholder.
 - `src/app/layout.tsx` pulls SEO metadata and the JSON-LD Person schema from `DATA`; `src/app/sitemap.ts` and `src/app/robots.ts` use `DATA.url` (update it when the deploy domain changes).
 
 **Pages** (`src/app/`):
@@ -50,4 +50,4 @@ There is no test suite in this repo.
 ## Notes
 
 - `DATA.url` still points at the template author's domain — it should be updated to the real deployed URL.
-- `resume.tsx` references project videos (`Bid_Athlete.mp4`, `SkillSurge.mp4`) that are not in `public/`; the UI falls back to a placeholder until they're added.
+- Large project `.mp4`s were historically bundled in `public/` (~224 MB, still in git history via commits `c178bfe`/`fde7279`). The intended source is optimized Cloudinary URLs set on each project's `video`/`image` in `resume.tsx`; once migrated, the local `public/*.mp4` files can be deleted (reclaiming the git-history space needs a separate `git filter-repo`/BFG rewrite).

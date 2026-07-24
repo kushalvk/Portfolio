@@ -125,9 +125,9 @@ export const DATA = {
           icon: <Icons.github className="size-3" />,
         },
       ],
-      image: "",
+      image: "https://res.cloudinary.com/da0lceyy7/image/upload/v1784869773/BidAthlet_tsfwmu.png",
       video:
-        "Bid_Athlete.mp4",
+        "https://res.cloudinary.com/da0lceyy7/video/upload/v1784869623/Bid_Athlete_amphda.mp4",
     },
     {
       title: "WorkPilot",
@@ -156,8 +156,8 @@ export const DATA = {
           icon: <Icons.github className="size-3" />,
         },
       ],
-      image: "",
-      video: "Office_MS.mp4",
+      image: "https://res.cloudinary.com/da0lceyy7/image/upload/v1784870483/OfficeMS_v6nmew.png",
+      video: "https://res.cloudinary.com/da0lceyy7/video/upload/v1784870357/Office_MS_uxkcfc.mp4",
     },
     {
       title: "VeriNest",
@@ -190,38 +190,8 @@ export const DATA = {
           icon: <Icons.github className="size-3" />,
         },
       ],
-      image: "VeriNest.png",
-      video: "",
-    },
-    {
-      title: "StaySync",
-      href: "https://hotel-managment-system-client.vercel.app/",
-      dates: "Aug 2024 - Oct 2024",
-      active: true,
-      description:
-        "VK Hotel Management System is a comprehensive platform that allows users to book rooms, halls, and dining spaces, and make secure online payments. The system also includes various management tools for admin users and handles different room types, bookings, and payment options.",
-      technologies: [
-        "React.js",
-        "MongoDB",
-        "TailwindCSS",
-        "Node.js",
-        "Express.js"
-      ],
-      links: [
-        {
-          type: "Website",
-          href: "https://hotel-managment-system-client.vercel.app/",
-          icon: <Icons.globe className="size-3" />,
-        },
-        {
-          type: "Source",
-          href: "https://github.com/kushalvk/Hotel-Managment-System",
-          icon: <Icons.github className="size-3" />,
-        },
-      ],
-      image: "",
-      video:
-        "Hotel_MS.mp4",
+      image: "https://res.cloudinary.com/da0lceyy7/image/upload/v1784870563/VeriNest_xtfvc8.png",
+      video: "https://res.cloudinary.com/da0lceyy7/video/upload/v1784871065/VeriNestVideo_c91utm.mp4",
     },
     {
       title: "SkillSurge",
@@ -249,9 +219,39 @@ export const DATA = {
           icon: <Icons.github className="size-3" />,
         },
       ],
-      image: "",
+      image: "https://res.cloudinary.com/da0lceyy7/image/upload/v1784871540/SkillSurgeP_wpqt6p.png",
       video:
-          "SkillSurge.mp4",
+          "https://res.cloudinary.com/da0lceyy7/video/upload/v1784871987/SkillSurge_drvpwz.mp4",
+    },
+    {
+      title: "StaySync",
+      href: "https://hotel-managment-system-client.vercel.app/",
+      dates: "Aug 2024 - Oct 2024",
+      active: true,
+      description:
+        "VK Hotel Management System is a comprehensive platform that allows users to book rooms, halls, and dining spaces, and make secure online payments. The system also includes various management tools for admin users and handles different room types, bookings, and payment options.",
+      technologies: [
+        "React.js",
+        "MongoDB",
+        "TailwindCSS",
+        "Node.js",
+        "Express.js"
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://hotel-managment-system-client.vercel.app/",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/kushalvk/Hotel-Managment-System",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "https://res.cloudinary.com/da0lceyy7/image/upload/v1784871082/HotelMS_jbfgom.png",
+      video:
+        "https://res.cloudinary.com/da0lceyy7/video/upload/v1784871531/Hotel_MS_u7xyej.mp4",
     },
   ],
 } as const;

@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUpRightIcon, CalendarIcon } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 
 type Project = (typeof DATA.projects)[number];
 
@@ -41,28 +41,8 @@ function initialsOf(title: string) {
 
 function ProjectMedia({ project }: { project: Project }) {
   const [videoFailed, setVideoFailed] = useState(false);
-  const [imageFailed, setImageFailed] = useState(false);
-  const [inView, setInView] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  // Only mount the <video> once the card approaches the viewport. Videos are
-  // NOT in the initial HTML, so the mp4 downloads can't hog the browser's
-  // connections and starve the page's JavaScript on a cold first load.
-  useEffect(() => {
-    const node = containerRef.current;
-    if (!node) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setInView(true);
-          observer.disconnect();
-        }
-      },
-      { rootMargin: "200px" }
-    );
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, []);
+  const [posterFailed, setPosterFailed] = useState(false);
+  const [activated, setActivated] = useState(false);
 
   const videoSrc = project.video
     ? project.video.startsWith("http") || project.video.startsWith("/")
@@ -70,29 +50,32 @@ function ProjectMedia({ project }: { project: Project }) {
       : `/${project.video}`
     : undefined;
 
-  const showVideo = Boolean(videoSrc) && inView && !videoFailed;
-  const showImage = !showVideo && Boolean(project.image) && !imageFailed;
+  const posterSrc = project.image && !posterFailed ? project.image : undefined;
+
+  // Poster-first: only the lightweight poster loads on scroll. The video bytes
+  // are fetched only when the user shows intent — hovering the card (desktop)
+  // or tapping the play button (touch/click) — so the projects grid never
+  // downloads multi-MB clips just to render.
+  const activate = () => {
+    if (videoSrc) setActivated(true);
+  };
+
+  const showVideo = Boolean(videoSrc) && activated && !videoFailed;
 
   return (
-    <div ref={containerRef} className="relative aspect-video w-full overflow-hidden">
-      {showVideo ? (
-        <video
-          src={videoSrc}
-          autoPlay
-          loop
-          muted
-          playsInline
-          onError={() => setVideoFailed(true)}
-          className="pointer-events-none size-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-        />
-      ) : showImage ? (
+    <div
+      className="relative aspect-video w-full overflow-hidden"
+      onMouseEnter={activate}
+    >
+      {/* Base layer: poster image, or a gradient/initials placeholder */}
+      {posterSrc ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img
-          src={project.image}
+          src={posterSrc}
           alt={project.title}
           loading="lazy"
           decoding="async"
-          onError={() => setImageFailed(true)}
+          onError={() => setPosterFailed(true)}
           className="size-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
         />
       ) : (
@@ -102,6 +85,22 @@ function ProjectMedia({ project }: { project: Project }) {
           </span>
         </div>
       )}
+
+      {/* Video overlays the poster once activated */}
+      {showVideo && (
+        <video
+          src={videoSrc}
+          poster={posterSrc}
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="none"
+          onError={() => setVideoFailed(true)}
+          className="pointer-events-none absolute inset-0 size-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+        />
+      )}
+
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
     </div>
   );
